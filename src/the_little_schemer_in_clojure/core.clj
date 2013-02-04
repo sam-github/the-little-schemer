@@ -34,3 +34,17 @@
 ; #t -> true
 ; #f -> false
 
+; Chapter 8
+
+(def multirember_co (fn [a lat col] (cond
+   (empty? lat) (col (quote ()) (quote ()))
+   (eq? (car lat) a) (multirember_co a (cdr lat) (fn [newlat seen] (col newlat (cons (car lat) seen))))
+   :else (multirember_co a (cdr lat) (fn [newlat seen] (col (cons (car lat) newlat) seen))))))
+
+(def multirember&co (fn [a lat col] (cond
+   (empty? lat) (col '() '())
+   (eq? (car lat) a) (multirember&co a (cdr lat) (fn [newlat seen] (col newlat (cons (car lat) seen))))
+   :else (multirember&co a (cdr lat) (fn [newlat seen] (col (cons (car lat) newlat) seen))))))
+
+; https://github.com/midpeter444/little-schemer/blob/master/clojure/littleclj.clj
+

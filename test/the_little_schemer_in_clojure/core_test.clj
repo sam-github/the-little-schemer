@@ -24,9 +24,19 @@
 
 (deftest not-null-test
   (testing "not null?"
-    (is (= false (null? '(1 2))))))
+    (is (= false (null? '(1))))))
 
     
+(deftest multi_co
+  (testing "multi_co"
+    (is (= '(("b" "c") ("a")) (multirember&co "a" '("a", "b", "c") list)))))
+
+(deftest multi_co2
+  (testing "multi_co2"
+    (is (= '(("b" "c") ("a")) (multirember_co "a" '("a", "b", "c") list)))))
+
+
+
     
     
     
