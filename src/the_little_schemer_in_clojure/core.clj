@@ -22,10 +22,8 @@
 ; http://hyperpolyglot.org/lisp
 ;   says cljr has list?, so atom? would be not list?
 
-; A collection is null? when the rest is nil
-(defn null? [l] (nil? (next l)))
-
-; cljr has empty?
+; A collection is null? when it is empty?
+(def null? empty?)
 
 ; Identicality is called eq? in scheme, identical? in clojure
 (def eq? identical?)
@@ -36,13 +34,8 @@
 
 ; Chapter 8
 
-(def multirember_co (fn [a lat col] (cond
-   (empty? lat) (col (quote ()) (quote ()))
-   (eq? (car lat) a) (multirember_co a (cdr lat) (fn [newlat seen] (col newlat (cons (car lat) seen))))
-   :else (multirember_co a (cdr lat) (fn [newlat seen] (col (cons (car lat) newlat) seen))))))
-
 (def multirember&co (fn [a lat col] (cond
-   (empty? lat) (col '() '())
+   (null? lat) (col (quote ()) (quote ()))
    (eq? (car lat) a) (multirember&co a (cdr lat) (fn [newlat seen] (col newlat (cons (car lat) seen))))
    :else (multirember&co a (cdr lat) (fn [newlat seen] (col (cons (car lat) newlat) seen))))))
 
