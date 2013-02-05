@@ -6,6 +6,9 @@
   [& args]
   (println "Hello, World!"))
 
+; Another little schemer:
+;   https://github.com/midpeter444/little-schemer/blob/master/clojure/littleclj.clj
+
 ; The scheme primitives
 
 ; car/cdr are first/rest
@@ -18,9 +21,6 @@
 ; http://juliangamble.com/blog/2012/07/20/the-little-schemer-in-clojure-chapter-1/
 ; Suggests using seq? instead of coll?, and then points to this, which I don't understand:
 ;  http://clojure.org/lazy
-
-; http://hyperpolyglot.org/lisp
-;   says cljr has list?, so atom? would be not list?
 
 ; A collection is null? when it is empty?
 (def null? empty?)
@@ -39,5 +39,4 @@
    (eq? (car lat) a) (multirember&co a (cdr lat) (fn [newlat seen] (col newlat (cons (car lat) seen))))
    :else (multirember&co a (cdr lat) (fn [newlat seen] (col (cons (car lat) newlat) seen))))))
 
-; https://github.com/midpeter444/little-schemer/blob/master/clojure/littleclj.clj
 

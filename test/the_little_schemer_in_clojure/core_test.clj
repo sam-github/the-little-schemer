@@ -4,7 +4,9 @@
 
 (deftest car-test
   (testing "car"
-    (is (= 'a (car '(a b))))))
+    (is (= 'a (car '(a b))))
+    (is (= 'a (car '(a))))
+    ))
     
 (deftest cdr-test
   (testing "cdr"
@@ -12,31 +14,20 @@
     
 (deftest atom-test
   (testing "atom?"
-    (is (= true (atom? 1)))))
-
-(deftest not-atom-test
-  (testing "not atom?"
-    (is (= false (atom? '(1 2))))))
+    (is (= true  (atom? 1)))
+    (is (= true  (atom? "1")))
+    (is (= false (atom? '())))
+    (is (= false (atom? '("1"))))
+    ))
 
 (deftest null-test
   (testing "null?"
-    (is (= true (null? '())))))
+    (is (= true  (null? '())))
+    (is (= false (null? '(1))))
+    (is (= false (null? '("a" 1))))
+    ))
 
-(deftest not-null-test
-  (testing "not null?"
-    (is (= false (null? '(1))))))
-
-    
-(deftest multi_co
+(deftest multirember&co-test
   (testing "multi_co"
     (is (= '(("b" "c") ("a")) (multirember&co "a" '("a", "b", "c") list)))))
 
-(deftest multi_co2
-  (testing "multi_co2"
-    (is (= '(("b" "c") ("a")) (multirember_co "a" '("a", "b", "c") list)))))
-
-
-
-    
-    
-    
